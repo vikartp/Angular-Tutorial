@@ -1,13 +1,66 @@
-<!-- src/app/app.component.html -->
-<nav>
-  <a routerLink="/">Home</a> |
-  <a routerLink="/about">About</a> |
-  <a routerLink="/contact">Contact</a> |
-  <a routerLink="/signal">Signal</a> |
-  <a routerLink="/lifecycle">Lifecycle</a> | 
-  <a routerLink="/rxjs">Rxjs</a> |
-  <a routerLink="/dynamic">Dynamic Comp</a> |
-  <a routerLink="/injectionToken">Injection Token</a> 
+<!-- Header -->
+<header class="sticky top-0 z-50 flex items-center justify-between px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-gray-900 dark:to-gray-800 shadow-md">
+  <div class="flex items-center gap-3">
+    <span class="text-2xl">🅰️</span>
+    <h1 class="text-xl font-bold text-white tracking-wide">Angular Made Easy</h1>
+  </div>
+  <button
+    (click)="toggleTheme()"
+    class="flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium bg-white/15 hover:bg-white/25 text-white transition-colors cursor-pointer"
+    aria-label="Toggle dark mode">
+    <span class="text-base">{{ theme.darkMode() ? '☀️' : '🌙' }}</span>
+  </button>
+</header>
 
-</nav>
-<router-outlet></router-outlet>
+<!-- Split Layout -->
+<as-split direction="horizontal" class="flex-1 min-h-0">
+  <as-split-area [size]="15">
+    <nav class="h-full overflow-y-auto bg-gray-50 dark:bg-gray-900 p-4">
+      <p class="px-3 mb-3 text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500">Topics</p>
+      <a routerLink="/" routerLinkActive="bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-semibold" [routerLinkActiveOptions]="{ exact: true }"
+         class="block px-3 py-2.5 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
+        🏠 Home
+      </a>
+      <hr class="my-1 border-gray-200 dark:border-gray-700">
+      <a routerLink="/about" routerLinkActive="bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-semibold"
+         class="block px-3 py-2.5 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
+        📖 About
+      </a>
+      <hr class="my-1 border-gray-200 dark:border-gray-700">
+      <a routerLink="/contact" routerLinkActive="bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-semibold"
+         class="block px-3 py-2.5 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
+        📬 Contact
+      </a>
+      <hr class="my-1 border-gray-200 dark:border-gray-700">
+      <a routerLink="/signal" routerLinkActive="bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-semibold"
+         class="block px-3 py-2.5 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
+        📡 Signals
+      </a>
+      <hr class="my-1 border-gray-200 dark:border-gray-700">
+      <a routerLink="/lifecycle" routerLinkActive="bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-semibold"
+         class="block px-3 py-2.5 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
+        🔄 Lifecycle Hooks
+      </a>
+      <hr class="my-1 border-gray-200 dark:border-gray-700">
+      <a routerLink="/rxjs" routerLinkActive="bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-semibold"
+         class="block px-3 py-2.5 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
+        🔗 RxJS
+      </a>
+      <hr class="my-1 border-gray-200 dark:border-gray-700">
+      <a routerLink="/dynamic" routerLinkActive="bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-semibold"
+         class="block px-3 py-2.5 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
+        ⚡ Dynamic Components
+      </a>
+      <hr class="my-1 border-gray-200 dark:border-gray-700">
+      <a routerLink="/injectionToken" routerLinkActive="bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 font-semibold"
+         class="block px-3 py-2.5 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
+        💉 Injection Token
+      </a>
+    </nav>
+  </as-split-area>
+  <as-split-area [size]="85">
+    <div class="h-full overflow-y-auto bg-white dark:bg-gray-950 p-6">
+      <router-outlet></router-outlet>
+    </div>
+  </as-split-area>
+</as-split>
