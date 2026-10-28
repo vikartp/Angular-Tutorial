@@ -1,0 +1,38 @@
+<div class="flex items-center justify-center min-h-full p-6">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()"
+        class="w-full max-w-md p-10 rounded-2xl shadow-lg
+               bg-white dark:bg-gray-800
+               border border-gray-200 dark:border-gray-700">
+
+    <h2 class="text-2xl font-bold mb-8 text-gray-800 dark:text-white">User Registration</h2>
+
+    <div class="mb-5">
+      <label for="name">Name</label>
+      <input id="name" formControlName="name" placeholder="Enter name" />
+      @if (userForm.get('name')?.hasError('required') && userForm.get('name')?.touched) {
+        <span class="field-error">Name is required</span>
+      }
+    </div>
+
+    <div class="mb-5">
+      <label for="email">Email</label>
+      <input id="email" formControlName="email" placeholder="Enter email" />
+      @if (userForm.get('email')?.hasError('required') && userForm.get('email')?.touched) {
+        <span class="field-error">Email is required</span>
+      }
+    </div>
+
+    <h3 class="text-lg font-semibold mt-6 mb-2 text-gray-700 dark:text-gray-200">Address</h3>
+    <hr class="mb-5 border-gray-200 dark:border-gray-600" />
+
+    <app-address-form formControlName="address" />
+
+    <button type="submit">Submit</button>
+
+    @if (submitted) {
+      <pre class="mt-6 p-4 rounded-lg text-sm overflow-auto
+                  bg-gray-50 dark:bg-gray-700
+                  text-gray-800 dark:text-gray-200">{{ userForm.value | json }}</pre>
+    }
+  </form>
+</div>

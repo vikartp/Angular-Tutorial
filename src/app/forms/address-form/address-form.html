@@ -1,0 +1,25 @@
+<div [formGroup]="addressForm">
+  <div class="mb-5">
+    <label for="street">Street</label>
+    <input id="street" formControlName="street" placeholder="Enter street" (blur)="onBlur()" />
+    @if (addressForm.get('street')?.hasError('required') && addressForm.get('street')?.touched) {
+      <span class="field-error">Street is required</span>
+    }
+  </div>
+
+  <div class="mb-5">
+    <label for="city">City</label>
+    <input id="city" formControlName="city" placeholder="Enter city" (blur)="onBlur()" />
+    @if (addressForm.get('city')?.hasError('required') && addressForm.get('city')?.touched) {
+      <span class="field-error">City is required</span>
+    }
+  </div>
+
+  <div class="mb-5">
+    <label for="zip">Zip Code</label>
+    <input id="zip" formControlName="zip" placeholder="Enter zip code" (blur)="onBlur()" />
+    @if (addressForm.get('zip')?.hasError('required') && addressForm.get('zip')?.touched) {
+      <span class="field-error">Zip code is required</span>
+    }
+  </div>
+</div>

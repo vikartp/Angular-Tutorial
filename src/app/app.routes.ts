@@ -9,6 +9,7 @@ import { RxjsTest } from './rxjs-test/rxjs-test';
 import { DynamicComponent } from './dynamic-component/dynamic-component';
 import { InjectionTokenComp } from './injection-token/injection-token';
 import { JSON_PLACEHOLDER_URL } from './injection-token/inject.interface';
+import { UserForm } from './forms/user-form/user-form';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -26,5 +27,6 @@ export const routes: Routes = [
       },
     ]
    },
+  { path: 'forms', component: UserForm },
   { path: '**', redirectTo: '' } // Fallback route (optional)
 ];
